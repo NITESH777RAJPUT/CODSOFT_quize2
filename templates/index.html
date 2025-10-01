@@ -1,10 +1,12 @@
-<!-- Home page template -->
 {% extends 'base.html' %}
 {% block content %}
-<h1>Welcome to Online Quiz Maker </h1>
-<p>Create quizzes, share them, and take quizzes created by others.</p>
-<div class="home-actions">
-    <a class="btn" href="/create">Create a Quiz</a>
-    <a class="btn outline" href="/quizzes">Browse Quizzes</a>
+<div class="hero-card">
+    <h1>Welcome to Online Quiz Maker </h1>
+    <p class="subtitle">Your platform for creating, sharing, and taking engaging quizzes.</p>
+    <p>Create quizzes, share them, and take quizzes created by others.</p>
+    <div class="home-actions">
+        <a class="btn" href="/create">Create a Quiz</a>
+        <a class="btn outline" href="/quizzes">Browse Quizzes</a>
+    </div>
 </div>
 {% endblock %}

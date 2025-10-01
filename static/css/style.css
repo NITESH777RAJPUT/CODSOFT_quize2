@@ -2,7 +2,7 @@
 :root {
     /* Naye colors for a richer look */
     --accent: #4f46e5;
-    /* Deep Indigo */
+    /* Deep Indigo (Good choice, keeping it) */
     --accent-hover: #4338ca;
     /* Darker Indigo for hover */
     --muted: #6b7280;
@@ -12,6 +12,10 @@
     --card-bg: #ffffff;
     --text-primary: #1f2937;
     /* Darker text */
+    --text-secondary: #4b5563;
+    /* New: for secondary text like small tags */
+    --border-color: #d1d5db;
+    /* New: Subtle border color */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -19,77 +23,134 @@
 body {
     font-family: Inter, sans-serif;
     margin: 0;
-    /* Naya background color */
     background: var(--background);
     color: var(--text-primary);
-    line-height: 1.6;
-    /* Thoda better readability */
+    line-height: 1.65;
+    /* Slightly increased line height for professionalism */
+    font-size: 1.05rem;
+    /* Slightly larger base font size for better readability */
 }
 
+/* Headings refinement */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+
 .container {
-    max-width: 1000px;
-    /* Thoda zyada width */
-    margin: 32px auto;
-    /* Zyada margin */
+    max-width: 1100px;
+    /* Increased max width for a spacious feel */
+    margin: 40px auto;
+    /* Increased margin */
     padding: 24px;
 }
 
 .nav {
     background: var(--card-bg);
-    padding: 14px 24px;
-    /* Zyada padding */
+    padding: 16px 40px;
+    /* More vertical and horizontal padding */
     display: flex;
-    gap: 16px;
+    gap: 20px;
     align-items: center;
-    /* Behtar shadow */
     box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid #e5e7eb;
-    /* Subtle border */
+    border-bottom: 1px solid var(--border-color);
+    /* Using new border variable */
+    font-weight: 500;
+    /* Subtle font weight */
 }
 
 .nav a {
     text-decoration: none;
-    color: var(--muted);
+    color: var(--text-secondary);
+    /* Changed from muted to secondary for less washed-out look */
     transition: color 0.2s;
-    /* Hover transition */
 }
 
 .nav a:hover {
     color: var(--accent);
-    /* Hover effect */
 }
 
 .nav-right {
     margin-left: auto
 }
 
-/* --- Buttons (Bulky look) --- */
+/* --- Form Labels & Inputs --- */
+form label {
+    display: block;
+    /* Make labels take full width */
+    margin-bottom: 15px;
+    /* Better vertical separation */
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input:not([type="radio"]) {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid var(--border-color);
+    /* Cleaner border */
+    border-radius: 8px;
+    /* Softer corners for inputs */
+    box-sizing: border-box;
+    /* Important for width: 100% */
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+form input:focus {
+    border-color: var(--accent);
+    /* Focus highlight */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* Subtle focus ring */
+}
+
+/* --- Buttons --- */
 .btn {
     background: var(--accent);
     color: #fff;
-    padding: 10px 16px;
-    /* Buttons thode bade */
-    border-radius: 12px;
-    /* Zyada naram corners */
+    padding: 12px 20px;
+    /* Increased padding for a more solid feel */
+    border-radius: 8px;
+    /* Sharper, more professional corners (was 12px) */
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-weight: 600;
-    /* Thoda zyada bold text */
+    font-size: 1rem;
+    /* Consistent font size */
     transition: background 0.3s, transform 0.1s, box-shadow 0.3s;
-    box-shadow: var(--shadow-sm);
-    /* Subtle shadow */
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    /* Accent color shadow for depth */
 }
 
 .btn:hover {
     background: var(--accent-hover);
-    /* Darker on hover */
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 6px 10px -1px rgba(79, 70, 229, 0.3);
 }
 
 .btn:active {
-    transform: scale(0.98);
-    /* Click effect */
+    transform: scale(0.99);
 }
 
 .btn.outline {
@@ -106,7 +167,7 @@ body {
 }
 
 .btn.small {
-    padding: 8px 12px;
+    padding: 8px 14px;
     font-size: 0.9rem
 }
 
@@ -114,32 +175,37 @@ body {
 .flashes {
     list-style: none;
     padding: 0;
-    margin-top: 16px;
+    margin-top: 20px;
 }
 
 .flashes li {
-    /* Behtar notification color */
-    background: #ffedd5;
-    /* Amber-100 */
-    color: #9a3412;
-    /* Amber-800 */
-    padding: 12px;
+    background: #eff6ff;
+    /* Blue-50 (Softer notification color) */
+    color: #1e40af;
+    /* Blue-800 */
+    padding: 15px;
+    /* Increased padding */
     border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 4px solid #f59e0b;
+    margin-bottom: 12px;
+    border-left: 4px solid #3b82f6;
+    /* Blue-500 */
+    font-weight: 500;
 }
 
 /* --- Card Styles (Question/Quiz) --- */
 .question-card,
 .qcard {
     background: var(--card-bg);
-    padding: 24px;
-    /* Zyada padding */
-    border-radius: 16px;
-    /* Bahut naram corners */
-    margin: 16px 0;
-    box-shadow: var(--shadow-md);
-    /* Prominent shadow */
+    padding: 24px 32px;
+    /* Increased horizontal padding */
+    border-radius: 12px;
+    /* Less 'naram' (was 16px) for a slightly cleaner edge */
+    margin: 20px 0;
+    /* Increased margin */
+    box-shadow: var(--shadow-sm);
+    /* Reduced shadow strength for cleaner look (was shadow-md) */
+    border: 1px solid var(--border-color);
+    /* Added a subtle border */
 }
 
 .choices {
@@ -148,34 +214,61 @@ body {
 }
 
 .choices li {
-    margin: 12px 0;
+    margin: 10px 0;
 }
+
+/* Styling for the take_quiz.html question rendering */
+.qcard label {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    margin-bottom: 8px;
+}
+
+.qcard label:hover {
+    background: #f9fafb;
+    /* Slight hover state */
+    border-color: var(--accent);
+}
+
+/* New: Styling for radio buttons in choices */
+.qcard input[type="radio"] {
+    margin-right: 12px;
+    /* Custom radio button styling can be added here for further refinement */
+}
+
 
 .result-item {
     background: var(--card-bg);
-    padding: 15px;
-    border-radius: 12px;
+    padding: 15px 20px;
+    border-radius: 10px;
     margin: 10px 0;
-    box-shadow: var(--shadow-sm);
-    /* Subtle shadow for list items */
+    box-shadow: none;
+    /* Removed shadow for cleaner list */
+    border: 1px solid var(--border-color);
 }
 
 .ok {
-    color: #10b981;
-    /* Green-500 */
+    color: #059669;
+    /* Darker, more professional green */
     font-weight: 600;
 }
 
 .bad {
-    color: #ef4444;
-    /* Red-500 */
+    color: #dc2626;
+    /* Darker, more professional red */
     font-weight: 600;
 }
 
 .home-actions {
     display: flex;
-    gap: 16px;
-    margin-top: 24px;
+    gap: 20px;
+    margin-top: 30px;
+    /* Increased margin */
 }
 
 /* --- Quiz List --- */
@@ -187,53 +280,157 @@ body {
 .quiz-item {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    /* Spread content out */
     background: var(--card-bg);
-    padding: 16px 20px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow-sm);
-    border-left: 5px solid var(--accent);
-    /* Accent stripe */
-    transition: transform 0.2s;
+    padding: 18px 25px;
+    /* More padding */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    /* Added border */
+    border-left: 6px solid var(--accent);
+    /* Thicker accent stripe */
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .quiz-item:hover {
-    transform: translateY(-2px);
-    /* Lift up effect */
-    box-shadow: var(--shadow-md);
+    transform: none;
+    /* Removed the lift up effect for a calmer, professional look */
+    background: #fcfcfd;
+    /* Very subtle background change on hover */
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.quiz-item strong {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.quiz-item small {
+    color: var(--text-secondary);
+    /* Using secondary color */
+    margin-left: 10px;
+    font-style: italic;
 }
 
 .small-text {
-    margin-top: 16px;
-    font-size: 0.95rem;
+    margin-top: 20px;
+    font-size: 1rem;
     color: var(--muted);
 }
 
-.small-text a {
-    color: var(--accent);
-    text-decoration: none;
+/* Styling for create_quiz.html's question card (to match form labels) */
+.question-card label input[type="text"] {
+    width: auto;
+    /* Overriding the 100% width for the small inputs next to radio buttons */
 }
 
-.small-text a:hover {
-    text-decoration: underline;
+/* Ensure the input next to radio buttons uses the full width it can */
+.question-card .choices label input[type="text"] {
+    flex-grow: 1;
 }
 
+/* Mobile adjustments */
+@media (max-width:900px) {
+    /* Changed breakpoint for tablet/mobile */
 
-@media (max-width:768px) {
-
-    /* Changed breakpoint for better mobile view */
     .container {
-        padding: 16px;
-        margin: 16px auto;
+        padding: 20px;
+        margin: 20px auto;
     }
 
     .nav {
         flex-wrap: wrap;
-        padding: 12px 16px;
+        padding: 12px 20px;
     }
 
     .home-actions {
-        flex-direction: column
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .quiz-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .quiz-item strong {
+        margin-right: auto;
     }
 }
+/* ... [Existing CSS code above this] ... */
+
+/* --- Home Page Specific Styles (The 'Bulky' Hero Card) --- */
+.hero-card {
+    background: var(--card-bg);
+    padding: 60px 80px;
+    /* Much larger padding for a bulky feel */
+    border-radius: 16px;
+    margin: 40px auto;
+    max-width: 900px;
+    /* Restrict max width slightly for better reading flow */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+    /* Prominent, deep shadow */
+    text-align: center;
+    /* Center align all content */
+    border: 1px solid var(--border-color);
+    /* Subtle border for definition */
+}
+
+.hero-card h1 {
+    font-size: 3rem;
+    /* Extra large heading */
+    font-weight: 800;
+    /* Extra bold */
+    color: var(--accent);
+    /* Using accent color for main heading */
+    margin-bottom: 10px;
+}
+
+.hero-card .subtitle {
+    font-size: 1.5rem;
+    /* Large subtitle */
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.hero-card p:last-of-type {
+    margin-bottom: 40px;
+    /* Extra space before the action buttons */
+}
+
+.home-actions {
+    display: flex;
+    justify-content: center;
+    /* Center the buttons */
+    gap: 20px;
+    margin-top: 24px;
+}
+
+/* ... [Existing CSS code below this] ... */
+
+/* Mobile adjustment for the bulky card */
+@media (max-width:900px) {
+
+    /* ... [Existing mobile CSS] ... */
+
+    .hero-card {
+        padding: 40px 20px;
+        /* Adjust padding for smaller screens */
+        margin: 20px auto;
+    }
+
+    .hero-card h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-card .subtitle {
+        font-size: 1.25rem;
+    }
+}
+/* Removed the extra closing brace from the original file */
