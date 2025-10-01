@@ -1,0 +1,40 @@
+<!-- Base template for Online Quiz Maker -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Online Quiz Maker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/quizzes">Quizzes</a>
+        <a href="/create">Create Quiz</a>
+        {% if user %}
+        <span class="nav-right">Hello, {{ user.username }} | <a href="/logout">Logout</a></span>
+        {% else %}
+        <span class="nav-right"><a href="/login">Login</a> | <a href="/register">Register</a></span>
+        {% endif %}
+    </nav>
+
+    <main class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for m in messages %}
+            <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="/static/js/quiz.js"></script>
+</body>
+
+</html>

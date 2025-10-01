@@ -1,0 +1,239 @@
+/* Main stylesheet for Online Quiz Maker */
+:root {
+    /* Naye colors for a richer look */
+    --accent: #4f46e5;
+    /* Deep Indigo */
+    --accent-hover: #4338ca;
+    /* Darker Indigo for hover */
+    --muted: #6b7280;
+    /* Gray-500 */
+    --background: #f3f4f6;
+    /* Lighter background */
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    /* Darker text */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: Inter, sans-serif;
+    margin: 0;
+    /* Naya background color */
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    /* Thoda better readability */
+}
+
+.container {
+    max-width: 1000px;
+    /* Thoda zyada width */
+    margin: 32px auto;
+    /* Zyada margin */
+    padding: 24px;
+}
+
+.nav {
+    background: var(--card-bg);
+    padding: 14px 24px;
+    /* Zyada padding */
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    /* Behtar shadow */
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid #e5e7eb;
+    /* Subtle border */
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s;
+    /* Hover transition */
+}
+
+.nav a:hover {
+    color: var(--accent);
+    /* Hover effect */
+}
+
+.nav-right {
+    margin-left: auto
+}
+
+/* --- Buttons (Bulky look) --- */
+.btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 16px;
+    /* Buttons thode bade */
+    border-radius: 12px;
+    /* Zyada naram corners */
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    /* Thoda zyada bold text */
+    transition: background 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: var(--shadow-sm);
+    /* Subtle shadow */
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    /* Darker on hover */
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: scale(0.98);
+    /* Click effect */
+}
+
+.btn.outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    box-shadow: none;
+}
+
+.btn.outline:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn.small {
+    padding: 8px 12px;
+    font-size: 0.9rem
+}
+
+/* --- Flash Messages (Notifications) --- */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+}
+
+.flashes li {
+    /* Behtar notification color */
+    background: #ffedd5;
+    /* Amber-100 */
+    color: #9a3412;
+    /* Amber-800 */
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid #f59e0b;
+}
+
+/* --- Card Styles (Question/Quiz) --- */
+.question-card,
+.qcard {
+    background: var(--card-bg);
+    padding: 24px;
+    /* Zyada padding */
+    border-radius: 16px;
+    /* Bahut naram corners */
+    margin: 16px 0;
+    box-shadow: var(--shadow-md);
+    /* Prominent shadow */
+}
+
+.choices {
+    list-style: none;
+    padding: 0
+}
+
+.choices li {
+    margin: 12px 0;
+}
+
+.result-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    box-shadow: var(--shadow-sm);
+    /* Subtle shadow for list items */
+}
+
+.ok {
+    color: #10b981;
+    /* Green-500 */
+    font-weight: 600;
+}
+
+.bad {
+    color: #ef4444;
+    /* Red-500 */
+    font-weight: 600;
+}
+
+.home-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+/* --- Quiz List --- */
+.quiz-list {
+    list-style: none;
+    padding: 0
+}
+
+.quiz-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card-bg);
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--accent);
+    /* Accent stripe */
+    transition: transform 0.2s;
+}
+
+.quiz-item:hover {
+    transform: translateY(-2px);
+    /* Lift up effect */
+    box-shadow: var(--shadow-md);
+}
+
+.small-text {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.small-text a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.small-text a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width:768px) {
+
+    /* Changed breakpoint for better mobile view */
+    .container {
+        padding: 16px;
+        margin: 16px auto;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+
+    .home-actions {
+        flex-direction: column
+    }
+}

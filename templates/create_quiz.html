@@ -1,0 +1,35 @@
+<!-- Create Quiz page template -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Create Quiz</h2>
+<form id="createForm" method="post">
+    <label>Quiz Title<br><input name="title" required></label>
+
+    <div id="questionsWrap"></div>
+
+    <button type="button" id="addQuestionBtn" class="btn outline">Add Question</button>
+    <button class="btn" type="submit">Save Quiz</button>
+</form>
+
+<script>
+    let qIndex = 0;
+    function addQuestion() {
+        const wrap = document.getElementById('questionsWrap');
+        const div = document.createElement('div');
+        div.className = 'question-card';
+        div.innerHTML = `
+    <label>Question<br><input name="question" required></label>
+    <label>Choice 1<br><input name="choice-${qIndex}" required></label>
+    <label>Choice 2<br><input name="choice-${qIndex}" required></label>
+    <label>Choice 3<br><input name="choice-${qIndex}"></label>
+    <label>Choice 4<br><input name="choice-${qIndex}"></label>
+    <label>Correct option index (0-based)<br><input name="correct-${qIndex}" required></label>
+    <button type="button" onclick="this.parentNode.remove()" class="btn small outline">Remove</button>
+  `;
+        wrap.appendChild(div);
+        qIndex++;
+    }
+    document.getElementById('addQuestionBtn').addEventListener('click', addQuestion);
+    addQuestion(); // add first question
+</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- Take Quiz page template -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Quiz: {{ quiz.title }}</h2>
+<div id="quizApp">
+    <div id="questionWrap"></div>
+    <div class="quiz-controls">
+        <button id="prevBtn" class="btn outline">Previous</button>
+        <button id="nextBtn" class="btn">Next</button>
+        <button id="submitBtn" class="btn" style="display:none">Submit</button>
+    </div>
+</div>
+<script>
+    const QUIZ_ID = "{{ quiz._id }}";
+</script>
+{% endblock %}
