@@ -1,9 +1,10 @@
-<!-- Create Quiz page template -->
 {% extends 'base.html' %}
 {% block content %}
 <h2>Create Quiz</h2>
 <form id="createForm" method="post">
-    <label>Quiz Title<br><input name="title" required></label>
+    <label>Quiz Title<br>
+        <input name="title" required>
+    </label>
 
     <div id="questionsWrap"></div>
 
@@ -13,23 +14,60 @@
 
 <script>
     let qIndex = 0;
+
     function addQuestion() {
         const wrap = document.getElementById('questionsWrap');
         const div = document.createElement('div');
         div.className = 'question-card';
         div.innerHTML = `
-    <label>Question<br><input name="question" required></label>
-    <label>Choice 1<br><input name="choice-${qIndex}" required></label>
-    <label>Choice 2<br><input name="choice-${qIndex}" required></label>
-    <label>Choice 3<br><input name="choice-${qIndex}"></label>
-    <label>Choice 4<br><input name="choice-${qIndex}"></label>
-    <label>Correct option index (0-based)<br><input name="correct-${qIndex}" required></label>
-    <button type="button" onclick="this.parentNode.remove()" class="btn small outline">Remove</button>
+    <h3>Question ${qIndex + 1}</h3>
+    <label>Question Text<br>
+      <input type="text" name="question" required>
+    </label>
+    <div class="choices">
+      <p><strong>Choices:</strong></p>
+      <label>
+        <input type="radio" name="correct-${qIndex}" value="0" required>
+        <input type="text" name="choice-${qIndex}" placeholder="Choice 1" required>
+      </label><br>
+      <label>
+        <input type="radio" name="correct-${qIndex}" value="1">
+        <input type="text" name="choice-${qIndex}" placeholder="Choice 2" required>
+      </label><br>
+      <label>
+        <input type="radio" name="correct-${qIndex}" value="2">
+        <input type="text" name="choice-${qIndex}" placeholder="Choice 3">
+      </label><br>
+      <label>
+        <input type="radio" name="correct-${qIndex}" value="3">
+        <input type="text" name="choice-${qIndex}" placeholder="Choice 4">
+      </label>
+    </div>
+    <button type="button" onclick="this.parentNode.remove()" class="btn small outline">Remove Question</button>
+    <hr>
   `;
         wrap.appendChild(div);
         qIndex++;
     }
+
     document.getElementById('addQuestionBtn').addEventListener('click', addQuestion);
-    addQuestion(); // add first question
+    addQuestion(); // add first question automatically
 </script>
+
+<style>
+    .question-card {
+        background: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 12px 0;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .choices label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 6px 0;
+    }
+</style>
 {% endblock %}
